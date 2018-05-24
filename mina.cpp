@@ -36,7 +36,7 @@ void Dijkstra(void){
 			
 			// Se posso melhorar a distância do vértice da vez, faço isso e o coloco na fila
 			if (dist[c.x][c.y] > dist[atual.x][atual.y] + m[c.x][c.y])
-      		{
+      			{
 				dist[c.x][c.y] = dist[atual.x][atual.y] + m[c.x][c.y];
 				fila.push({-dist[c.x][c.y], c});
 			}	
