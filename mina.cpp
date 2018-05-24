@@ -1,3 +1,9 @@
+/* 
+   Mateus Gonçalves - 05/18
+   Mina - OBI 2015 F2P2
+   Complexidade : O(N lg N)
+*/
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -13,7 +19,7 @@ int n, m[MAXN][MAXN], dist[MAXN][MAXN];
 int dir[5] = {0, 1, 0, -1, 0};
 
 void Dijkstra(void){
-	dist[0][0] = 0; // a distância da fonte para ela memsa é 0
+	dist[0][0] = 0; // a distância da fonte para ela mesma é 0
 	priority_queue < pair<int, pii> > fila; // declaro a heap
 	fila.push({-dist[0][0], {0, 0}}); // coloco a fonte na heap
 
@@ -21,7 +27,7 @@ void Dijkstra(void){
 		pii atual = fila.top().second; // pego o elemento do topo (mínimo)
    		fila.pop(); // retiro o mesmo
 
-		for(int k = 0; k < 4; k++){ // analiso todos os vértices adjacentes
+		for(int k = 0; k < 4; k++){ // analiso todos os vértices adjacentes à ele
 			pii c = {atual.x + dir[k], atual.y + dir[k+1]}; // defino as coordenadas do vértice da vez
 			
 			// se o da vez estiver fora dos limites da matriz, pulo para o próximo
@@ -30,7 +36,7 @@ void Dijkstra(void){
 			
 			// Se posso melhorar a distância do vértice da vez, faço isso e o coloco na fila
 			if (dist[c.x][c.y] > dist[atual.x][atual.y] + m[c.x][c.y])
-      			{
+      		{
 				dist[c.x][c.y] = dist[atual.x][atual.y] + m[c.x][c.y];
 				fila.push({-dist[c.x][c.y], c});
 			}	
